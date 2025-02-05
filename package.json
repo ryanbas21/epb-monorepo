@@ -8,7 +8,8 @@
     "pnpm": "9.15.0"
   },
   "scripts": {
-    "changeset": "nx release plan"
+    "changeset": "nx release plan",
+    "release": "nx release --skip-publish"
   },
   "private": true,
   "dependencies": {

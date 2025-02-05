@@ -5,6 +5,9 @@
   "references": [
     {
       "path": "./packages/request"
+    },
+    {
+      "path": "./apps/backend"
     }
   ]
 }

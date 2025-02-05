@@ -12,10 +12,14 @@
     "release": "nx release --skip-publish"
   },
   "private": true,
+  "lint-staged": {
+    "*": "pnpm nx format:write"
+  },
   "dependencies": {
     "@effect/platform": "catalog:effect",
     "@effect/platform-node": "catalog:effect",
-    "effect": "catalog:effect"
+    "effect": "catalog:effect",
+    "lint-staged": "^15.4.3"
   },
   "devDependencies": {
     "@effect/vitest": "catalog:effect",

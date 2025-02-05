@@ -1,3 +1,3 @@
 export function request(): string {
-  return 'request';
+  return 'change-return-value';
 }

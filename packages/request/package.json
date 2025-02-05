@@ -1,11 +1,16 @@
 {
   "name": "@epb/request",
-  "version": "0.0.0",
+  "version": "0.0.1-0",
   "private": true,
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanbas21/epb-monorepo.git",
+    "directory": "packages/request"
+  },
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -15,7 +20,6 @@
     }
   },
   "dependencies": {
-    "tslib": "^2.3.0",
-    "effect": "catalog:effect"
+    "tslib": "^2.3.0"
   }
 }

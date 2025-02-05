@@ -5,7 +5,7 @@ on:
 
 jobs:
   test:
-    name: Publish
+    name: Publish Beta
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -30,7 +30,7 @@ jobs:
         shell: bash
 
       - name: Publish packages
-        run: pnpm nx release publish --
+        run: pnpm nx release publish --tag beta
         shell: bash
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}

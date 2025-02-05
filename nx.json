@@ -17,6 +17,9 @@
       "{workspaceRoot}/.github/workflows/publish-beta.yml"
     ]
   },
+  "sync": {
+    "applyChanges": true
+  },
   "nxCloudId": "67a2d0b06025c85e7920ad45",
   "release": {
     "versionPlans": {

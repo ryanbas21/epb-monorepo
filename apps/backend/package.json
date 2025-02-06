@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "nx": {
-    "name": "backend",
+  "nx": { "name": "backend",
     "projectType": "application",
     "sourceRoot": "apps/backend/src",
     "targets": {
@@ -67,6 +66,8 @@
     }
   },
   "dependencies": {
+    "@epb/backend-spec": "workspace:*",
+    "@epb/index": "workspace:*",
     "@effect/platform-node": "catalog:effect",
     "@effect/platform": "catalog:effect",
     "effect": "catalog:effect"

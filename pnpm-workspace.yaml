@@ -1,11 +1,11 @@
 packages:
-  - "packages/*"
-  - "apps/*"
-
-
+  - 'packages/*'
+  - 'apps/*'
+  - 'libs/*'
+  - 'libs/routes/*'
 catalogs:
   effect:
-    "@effect/platform": "^0.75.3"
-    "@effect/platform-node": "^0.71.3"
-    "effect": "^3.12.9"
-    "@effect/vitest": "^0.17.5"
+    '@effect/platform': '^0.75.3'
+    '@effect/platform-node': '^0.71.3'
+    effect: '^3.12.9'
+    '@effect/vitest': '^0.17.5'

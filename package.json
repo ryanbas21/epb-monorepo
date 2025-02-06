@@ -9,16 +9,14 @@
   },
   "scripts": {
     "changeset": "nx release plan",
-    "release": "nx release --skip-publish"
+    "release": "nx release --skip-publish",
+    "prepare": "husky"
   },
   "private": true,
   "lint-staged": {
     "*": "pnpm nx format:write"
   },
   "dependencies": {
-    "@effect/platform": "catalog:effect",
-    "@effect/platform-node": "catalog:effect",
-    "effect": "catalog:effect",
     "lint-staged": "^15.4.3"
   },
   "devDependencies": {
@@ -40,6 +38,7 @@
     "esbuild": "^0.19.2",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.0.0",
+    "husky": "^9.1.7",
     "jsdom": "~22.1.0",
     "nx": "20.4.0",
     "prettier": "^2.6.2",

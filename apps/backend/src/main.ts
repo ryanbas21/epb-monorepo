@@ -1,9 +1,9 @@
 import { HttpApiBuilder, HttpApiSwagger } from '@effect/platform';
 import { NodeHttpServer, NodeRuntime } from '@effect/platform-node';
 import { Layer } from 'effect';
+import { GreetingsLive } from '@epb/index';
+import { MyApi } from '@epb/backend-spec';
 import { createServer } from 'node:http';
-import { GreetingsLive } from './routes/index.js';
-import { MyApi } from './specification.js';
 
 const MyApiLive = HttpApiBuilder.api(MyApi).pipe(Layer.provide(GreetingsLive));
 

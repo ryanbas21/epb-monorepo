@@ -40,6 +40,7 @@
   },
   "generators": {
     "@nx/js:library": {
+      "buildable": true,
       "outDir": "{projectRoot}/dist",
       "bundler": "tsc",
       "linter": "eslint",
@@ -84,9 +85,14 @@
   ],
   "targetDefaults": {
     "test": {
-      "dependsOn": ["^build", "^build"]
+      "dependsOn": ["^build", "^build", "^build", "^build"]
     },
     "@nx/esbuild:esbuild": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "@nx/js:tsc": {
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]

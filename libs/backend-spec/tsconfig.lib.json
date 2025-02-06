@@ -1,15 +1,16 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "out-tsc/backend",
+    "baseUrl": ".",
     "rootDir": "src",
-    "tsBuildInfoFile": "out-tsc/backend/tsconfig.app.tsbuildinfo"
+    "outDir": "dist",
+    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
+    "emitDeclarationOnly": false,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*.ts"],
+  "references": [],
   "exclude": [
-    "eslint.config.js",
-    "eslint.config.cjs",
-    "eslint.config.mjs",
     "vite.config.ts",
     "vite.config.mts",
     "vitest.config.ts",
@@ -22,13 +23,5 @@
     "src/**/*.spec.js",
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx"
-  ],
-  "references": [
-    {
-      "path": "../../libs/routes/index/tsconfig.lib.json"
-    },
-    {
-      "path": "../../libs/backend-spec/tsconfig.lib.json"
-    }
   ]
 }

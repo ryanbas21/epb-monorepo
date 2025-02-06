@@ -9,20 +9,24 @@
   },
   "scripts": {
     "changeset": "nx release plan",
-    "release": "nx release --skip-publish"
+    "release": "nx release --skip-publish",
+    "prepare": "husky"
   },
   "private": true,
+  "lint-staged": {
+    "*": "pnpm nx format:write"
+  },
   "dependencies": {
-    "@effect/platform": "catalog:effect",
-    "@effect/platform-node": "catalog:effect",
-    "effect": "catalog:effect"
+    "lint-staged": "^15.4.3"
   },
   "devDependencies": {
     "@effect/vitest": "catalog:effect",
     "@eslint/js": "^9.8.0",
+    "@nx/esbuild": "20.4.0",
     "@nx/eslint": "20.4.0",
     "@nx/eslint-plugin": "20.4.0",
     "@nx/js": "20.4.0",
+    "@nx/node": "20.4.0",
     "@nx/vite": "20.4.0",
     "@nx/web": "20.4.0",
     "@swc-node/register": "~1.9.1",
@@ -31,8 +35,11 @@
     "@types/node": "18.16.9",
     "@vitest/coverage-v8": "^1.0.4",
     "@vitest/ui": "^1.3.1",
+    "esbuild": "^0.19.2",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.0.0",
+    "husky": "^9.1.7",
+    "jsdom": "~22.1.0",
     "nx": "20.4.0",
     "prettier": "^2.6.2",
     "tslib": "^2.3.0",

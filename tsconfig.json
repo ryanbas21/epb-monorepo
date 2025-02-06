@@ -5,6 +5,18 @@
   "references": [
     {
       "path": "./packages/request"
+    },
+    {
+      "path": "./apps/backend"
+    },
+    {
+      "path": "./libs/backend-spec"
+    },
+    {
+      "path": "./libs/backend-spec"
+    },
+    {
+      "path": "./libs/routes/index"
     }
   ]
 }

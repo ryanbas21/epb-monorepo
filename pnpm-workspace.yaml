@@ -1,8 +1,11 @@
 packages:
   - 'packages/*'
   - 'apps/*'
-  - 'libs/*'
-  - 'libs/routes/*'
+  - 'libs/**/*'
+  - 'libs/handlers/*'
+  - 'libs/routes/*/*'
+  - 'libs/schemas/*'
+  - 'libs/specifications/*'
 catalogs:
   effect:
     '@effect/platform': '^0.75.3'

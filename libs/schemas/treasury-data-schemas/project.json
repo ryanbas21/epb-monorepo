@@ -1,0 +1,4 @@
+{
+  "name": "treasury-data-schemas",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json"
+}

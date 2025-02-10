@@ -7,16 +7,22 @@
       "path": "./packages/request"
     },
     {
-      "path": "./apps/backend"
+      "path": "./apps/treasury-data"
     },
     {
-      "path": "./libs/backend-spec"
+      "path": "./libs/specifications/treasury-data-specification"
     },
     {
-      "path": "./libs/backend-spec"
+      "path": "./libs/schemas/treasury-params-schema"
     },
     {
-      "path": "./libs/routes/index"
+      "path": "./libs/schemas/treasury-data-schemas"
+    },
+    {
+      "path": "./libs/handlers/treasury-data"
+    },
+    {
+      "path": "./libs/services/treasurydata"
     }
   ]
 }

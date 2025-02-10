@@ -1,0 +1,26 @@
+{
+  "name": "@epb/treasury-data-handlers",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@epb/treasury-data-service": "workspace:*",
+    "@epb/treasury-data-schemas": "workspace:*",
+    "@epb/treasury-data-spec": "workspace:*",
+    "@effect/platform": "catalog:effect",
+    "@effect/platform-node": "catalog:effect",
+    "effect": "catalog:effect",
+    "tslib": "^2.3.0"
+  }
+}

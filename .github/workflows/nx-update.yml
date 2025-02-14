@@ -68,6 +68,11 @@ jobs:
             This PR updates Nx using pnpm and applies all migrations non-interactively
             using the --create-commits flag.
 
+      - name: Enable Pull Request Automerge
+        run: gh pr merge --merge --auto ${{ steps.pr-outputs.outputs.pull-request-number }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
       - name: Approve PR
         if: github.actor == 'github-actions[bot]'
         uses: hmarr/auto-approve-action@v4

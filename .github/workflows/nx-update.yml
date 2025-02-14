@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: '22' # Adjust as needed
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4.1.0
+
       - name: Create and Checkout New Branch
         run: |
           git checkout -b nx/update-nx

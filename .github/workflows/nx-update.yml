@@ -1,0 +1,72 @@
+name: Nx Update PR
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * 1,5'
+
+jobs:
+  nx-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22' # Adjust as needed
+
+      - name: Create and Checkout New Branch
+        run: |
+          git checkout -b nx/update-nx
+
+      - name: Install Dependencies with pnpm
+        run: pnpm install
+
+      - name: Update Nx to Latest Version
+        run: pnpm exec nx migrate latest --yes
+
+      - name: Run Nx Migrations with Commit Creation
+        run: pnpm exec nx migrate --run-migrations --create-commits
+
+      - name: Commit Any Additional Changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git rm migrations.json
+
+          pnpm install --no-frozen-lockfile
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Apply Nx update and extra migrations"
+          else
+            echo "No additional changes to commit."
+          fi
+
+      - name: Push Branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push --set-upstream origin nx/update-nx
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        id: pr-outputs
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: 'Nx Update: Apply latest changes and migrations'
+          commit-message: 'Apply Nx update and migrations'
+          branch: nx/update-nx
+          base: main
+          body: |
+            This PR updates Nx using pnpm and applies all migrations non-interactively
+            using the --create-commits flag.
+
+      - name: Approve PR
+        if: github.actor == 'github-actions[bot]'
+        uses: hmarr/auto-approve-action@v4
+        with:
+          pull-request-number: ${{ steps.pr-outputs.outputs.pull-request-number }}

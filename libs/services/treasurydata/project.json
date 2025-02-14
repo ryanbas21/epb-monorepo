@@ -1,0 +1,4 @@
+{
+  "name": "@epb/treasury-data-service",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json"
+}

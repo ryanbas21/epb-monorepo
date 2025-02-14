@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../../libs/handlers/treasury-data"
+    },
+    {
+      "path": "../../libs/schemas/treasury-params-schema"
+    },
+    {
+      "path": "../../libs/specifications/treasury-data-specification"
+    },
+    {
+      "path": "../../libs/services/treasurydata"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

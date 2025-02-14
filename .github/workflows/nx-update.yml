@@ -42,7 +42,7 @@ jobs:
 
           if [ -f "migrations.json" ]; then
             git rm migrations.json
-          end
+          fi
 
           pnpm install --no-frozen-lockfile
           if [ -n "$(git status --porcelain)" ]; then

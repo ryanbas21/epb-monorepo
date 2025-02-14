@@ -33,7 +33,7 @@ jobs:
         run: pnpm exec nx migrate latest --yes
 
       - name: Run Nx Migrations with Commit Creation
-        run: pnpm exec nx migrate --run-migrations --create-commits
+        run: pnpm exec nx migrate --run-migrations --create-commits --if-exists
 
       - name: Commit Any Additional Changes
         run: |

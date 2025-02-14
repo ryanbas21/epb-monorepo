@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'  # Adjust as needed
+          node-version: '22' # Adjust as needed
 
       - name: Create and Checkout New Branch
         run: |
@@ -57,8 +57,8 @@ jobs:
         id: pr-outputs
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          title: "Nx Update: Apply latest changes and migrations"
-          commit-message: "Apply Nx update and migrations"
+          title: 'Nx Update: Apply latest changes and migrations'
+          commit-message: 'Apply Nx update and migrations'
           branch: nx/update-nx
           base: main
           body: |
@@ -70,4 +70,3 @@ jobs:
         uses: hmarr/auto-approve-action@v4
         with:
           pull-request-number: ${{ steps.pr-outputs.outputs.pull-request-number }}
-

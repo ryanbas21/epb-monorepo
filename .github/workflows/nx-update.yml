@@ -7,17 +7,23 @@ on:
 
 jobs:
   nx-update:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22' # Adjust as needed
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4.1.0
 
       - name: Create and Checkout New Branch
         run: |
@@ -30,13 +36,16 @@ jobs:
         run: pnpm exec nx migrate latest --yes
 
       - name: Run Nx Migrations with Commit Creation
-        run: pnpm exec nx migrate --run-migrations --create-commits
+        run: pnpm exec nx migrate --run-migrations --create-commits --if-exists
 
       - name: Commit Any Additional Changes
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git rm migrations.json
+
+          if [ -f "migrations.json" ]; then
+            git rm migrations.json
+          fi
 
           pnpm install --no-frozen-lockfile
           if [ -n "$(git status --porcelain)" ]; then
@@ -65,8 +74,14 @@ jobs:
             This PR updates Nx using pnpm and applies all migrations non-interactively
             using the --create-commits flag.
 
+      - name: Enable Pull Request Automerge
+        run: gh pr merge --merge --auto ${{ steps.pr-outputs.outputs.pull-request-number }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Approve PR
         if: github.actor == 'github-actions[bot]'
         uses: hmarr/auto-approve-action@v4
         with:
           pull-request-number: ${{ steps.pr-outputs.outputs.pull-request-number }}
+          GH_TOKEN: ${{ github.token }}

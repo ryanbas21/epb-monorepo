@@ -9,6 +9,7 @@ jobs:
   nx-update:
     permissions:
       contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -25,10 +26,6 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4.1.0
 
-      - name: Create and Checkout New Branch
-        run: |
-          git checkout -b nx/update-nx
-
       - name: Install Dependencies with pnpm
         run: pnpm install
 
@@ -40,26 +37,13 @@ jobs:
 
       - name: Commit Any Additional Changes
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email 'github-actions[bot]@users.noreply.github.com'
-
           if [ -f "migrations.json" ]; then
             git rm migrations.json
           fi
 
           pnpm install --no-frozen-lockfile
-          if [ -n "$(git status --porcelain)" ]; then
-            git add .
-            git commit -m "Apply Nx update and extra migrations"
-          else
-            echo "No additional changes to commit."
-          fi
-
-      - name: Push Branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git push --set-upstream origin nx/update-nx
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4

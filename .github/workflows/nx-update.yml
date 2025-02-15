@@ -61,10 +61,10 @@ jobs:
       - name: Enable Pull Request Automerge
         run: gh pr merge --merge --auto ${{ steps.pr-outputs.outputs.pull-request-number }}
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Approve PR
         uses: hmarr/auto-approve-action@v4
         with:
           pull-request-number: ${{ steps.pr-outputs.outputs.pull-request-number }}
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
